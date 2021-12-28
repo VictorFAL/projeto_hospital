@@ -39,7 +39,7 @@
 - Triagem
 	- id
 	- id_paciente
-	- temp
+	- temperatura
 	- pressao
 
 - Consultas
