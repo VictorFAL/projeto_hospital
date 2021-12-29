@@ -1,15 +1,42 @@
-from flask import Flask
+from flask import Flask, request
 import csv
 import json
 
 app = Flask(__name__)
 
 ##### PACIENTES #####
-@app.route('/pacientes', methods=['GET'])
+@app.route('/paciente', methods=['GET'])
 def pacientes():
     pacientes = listar_csv('db\pacientes.csv')
     return json.dumps(pacientes)
 
+@app.route('/paciente/add', methods=['POST'])
+def paciente_add():
+    paciente = request.json             # teste
+    #paciente = json.loads(request.data)   # codigo do danilo
+    nova_linha = [paciente['cpf'], paciente['nome'], paciente['idade'], paciente['bairro'], paciente['comorbidade']]
+    with open('db\pacientes.csv', 'a', encoding='utf-8', newline='') as dados:
+        writer = csv.writer(dados, delimiter=';')
+        writer.writerow(nova_linha)
+
+    return {'message': 'OK'}
+
+@app.route('/paciente/del/<id>', methods=['DELETE'])
+def paciente_del(id):
+    with open('db\pacientes.csv', 'r', encoding='utf-8') as planilha:
+        reader = csv.reader(planilha, delimiter=';')
+        dados = list(reader)
+    
+    with open('db\pacientes.csv', 'w', encoding='utf-8', newline='') as planilha:
+        writer = csv.writer(planilha, delimiter=';')
+
+        for item in dados:
+            cpf, nome, idade, bairro, comorbidade = item
+
+            if(cpf != id):
+                writer.writerow(item)
+    
+    return {'message': 'OK'}
 
 ##### MEDICOS #####
 
@@ -28,11 +55,13 @@ def pacientes():
 ##### CONSULTAS #####
 
 
+
+##### LISTAR #####
 def listar_csv(arquivo):
     lst = []
 
     with open(arquivo, 'r', encoding='utf-8') as dados:
-        next(dados)     # pula a primeira linha
+        next(dados)     # pula a primeira linha (cabecalho)
         tabela = csv.reader(dados, delimiter=';')
 
         if('pacientes' in arquivo):
@@ -110,5 +139,4 @@ def listar_csv(arquivo):
                     'diagnostico': linha[3]
                 }
                 lst.append(consulta)
-
     return lst
