@@ -1,2 +1,2 @@
-id;id_paciente;id_medico;diagnostico
-1;1;1;lupus
+id;id_paciente;id_medico;diagnostico;retorno
+1;1;1;lupus;10/01/2022

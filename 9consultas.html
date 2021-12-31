@@ -57,5 +57,59 @@
             na lista que iremos obter da API para relacionar todos os clientes existentes -->
     </table>
 </body>
-
 </html>
+
+<script language="javascript">
+    function listar() {
+        fetch('http://127.0.0.1:5000/consultas',
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                method: "GET"
+            })
+            .then(function (res) {
+                res.json()
+                    .then(lista => {
+                        console.log(lista)
+                        inserirLinhas(lista)
+                    })
+            })
+            .catch(function (res) { console.log(res) })
+    }
+
+    function inserirLinhas(lista) {
+        for (var i = 0; i < lista.length; i++) {
+            var row = $('<tr/>');
+            row.append($('<td/>').html(lista[i]['id']));
+            row.append($('<td/>').html(lista[i]['id_paciente']));
+            row.append($('<td/>').html(lista[i]['id_medico']));
+            row.append($('<td/>').html(lista[i]['diagnostico']));
+            row.append($('<td/>').html(lista[i]['retorno']));      // SE NAO FUNCIONAR MUDAR ISSO  abaixo
+            row.append($('<td/>').html('<img src="images/delete_icon.png" width="30" onclick="deletar(' + i + ')" style="cursor: pointer;">'));
+            $('#table').append(row);
+        }
+    }
+
+    function deletar(nroLinha) {
+        fetch('http://127.0.0.1:5000/consulta/del/' + String(nroLinha),
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                method: "DELETE"
+            })
+            .then(function (res) {
+                res.json()
+                    .then(data => {
+                        console.log('OK')
+                        document.location.reload(true);
+                    })
+            })
+            .catch(function (res) { console.log(res) })
+    }
+</script>

@@ -1,8 +1,11 @@
 from flask import Flask, request
+from flask_cors import CORS, cross_origin
 import csv
 import json
 
 app = Flask(__name__)
+cors = CORS(api)
+api.config['CORS_HEADERS'] = 'Content-Type'
 
 ##### PACIENTES #####
 # Listar
@@ -244,7 +247,7 @@ def recepcionistas():
 def recepcionista_add():
     recepcionista = request.json             # teste
     #recepcionista = json.loads(request.data)   # codigo danilo
-    nova_linha = [recepcionista['id'], recepcionista['nome']]
+    nova_linha = [recepcionista['id'], recepcionista['nome'], recepcionista['email']]
     with open('db/recepcionistas.csv', 'a', encoding='utf-8', newline='') as dados:
         writer = csv.writer(dados, delimiter=';')
         writer.writerow(nova_linha)
@@ -262,7 +265,7 @@ def recepcionista_del(id):
         writer = csv.writer(planilha, delimiter=';')
 
         for item in dados:
-            rec_id, nome = item
+            rec_id, nome, email = item
 
             if(rec_id != id):
                 writer.writerow(item)
@@ -320,7 +323,7 @@ def consultas():
 def consulta_add():
     consulta = request.json             # teste
     #consulta = json.loads(request.data)   # codigo danilo
-    nova_linha = [consulta['id'], consulta['id_paciente'], consulta['id_medico'], consulta['diagnostico']]
+    nova_linha = [consulta['id'], consulta['id_paciente'], consulta['id_medico'], consulta['diagnostico'], consulta['retorno']]
     with open('db/consultas.csv', 'a', encoding='utf-8', newline='') as dados:
         writer = csv.writer(dados, delimiter=';')
         writer.writerow(nova_linha)
@@ -338,7 +341,7 @@ def consulta_del(id):
         writer = csv.writer(planilha, delimiter=';')
 
         for item in dados:
-            cons_id, id_paciente, id_medico, diag = item
+            cons_id, id_paciente, id_medico, diag, retorno = item
 
             if(cons_id != id):
                 writer.writerow(item)
@@ -408,7 +411,8 @@ def listar_csv(arquivo):
             for linha in tabela:
                 recepcionista = {
                     'id': linha[0],
-                    'nome': linha[1]
+                    'nome': linha[1],
+                    'email': linha[2]
                 }
                 lst.append(recepcionista)
         elif('triagem' in arquivo):
@@ -426,7 +430,8 @@ def listar_csv(arquivo):
                     'id': linha[0],
                     'id_paciente': linha[1],
                     'id_medico': linha[2],
-                    'diagnostico': linha[3]
+                    'diagnostico': linha[3],
+                    'retorno': linha[4]
                 }
                 lst.append(consulta)
     return lst
