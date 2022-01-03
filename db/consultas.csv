@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 id;id_paciente;id_medico;diagnostico;data de retorno
 1;1;1;lupus
+=======
+id;id_paciente;id_medico;diagnostico;retorno
+1;1;1;lupus;10/01/2022
+>>>>>>> e743fb97ebee69a0b4a8362e229fe47035dc4bcd

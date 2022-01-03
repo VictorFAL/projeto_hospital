@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>
-        Lista de Técnicos
+        Lista de Recepcionistas
     </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -12,6 +12,7 @@
 
 <body onload="listar()">
 
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,59 +20,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="home.html">Home</a><span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="1paciente.html">Pacientes</a>
-                </li>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="2medicos.html">Médicos</a>
-            </li>
-            <li>
-            <li class="nav-item">
-                <a class="nav-link" href="3enfermeiros.html">Enfermeiros</a>
-            </li>
-            <li>
-                <li class="nav-item">
-                    <a class="nav-link" href="4Medicamentos.html">Medicamentos</a>
-                </li>
-            <li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="5tecnicos.html">Técnicos</a>
+                    <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="6exames.html">Exames</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"></a>
                 </li>
-                <li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="7recepcionistas.html">Recepcionistas</a>
-                    </li>
-                </li>
-                <li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="8triagem.html">Triagem</a>
-                    </li>
-                </li>
-                <li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="9consultas.html">Consultas</a>
-                    </li>            
             </ul>
         </div>
     </nav>
-    <h1>Técnicos</h1>
-    
-    <img src="../images/Técnicos.JPG" style="width:250px; margin-bottom: -50px">
 
+
+    <h1>Recepcionistas</h1>
     <br>
 
     <div style="text-align: end; margin-right: 50px;">
-        <a href="5cad_tecnicos.html">
-            <img src="../images/insert_icon.png" width="30">
+        <a href="7cad_recepcionistas.html">
+            <img src="images/insert_icon.png" width="30">
         </a>
     </div>
 
@@ -82,7 +47,7 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Setor</th>
+                <th scope="col">Email</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -90,12 +55,11 @@
             na lista que iremos obter da API para relacionar todos os clientes existentes -->
     </table>
 </body>
-
 </html>
 
 <script language="javascript">
     function listar() {
-        fetch('http://127.0.0.1:5000/tecnicos',
+        fetch('http://127.0.0.1:5000/recepcionistas',
             {
                 headers: {
                     'Accept': 'application/json',
@@ -119,14 +83,14 @@
             var row = $('<tr/>');
             row.append($('<td/>').html(lista[i]['id']));
             row.append($('<td/>').html(lista[i]['nome']));
-            row.append($('<td/>').html(lista[i]['setor']));      // SE NAO FUNCIONAR MUDAR ISSO  abaixo
+            row.append($('<td/>').html(lista[i]['email']));      // SE NAO FUNCIONAR MUDAR ISSO  abaixo
             row.append($('<td/>').html('<img src="images/delete_icon.png" width="30" onclick="deletar(' + i + ')" style="cursor: pointer;">'));
             $('#table').append(row);
         }
     }
 
     function deletar(nroLinha) {
-        fetch('http://127.0.0.1:5000/tecnico/del/' + String(nroLinha),
+        fetch('http://127.0.0.1:5000/recepcionista/del/' + String(nroLinha),
             {
                 headers: {
                     'Accept': 'application/json',
