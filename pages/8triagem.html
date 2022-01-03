@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>
-        Lista de Pacientes
+        Lista de Triagens
     </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -11,8 +11,6 @@
 </head>
 
 <body onload="listar()">
-
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,8 +21,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="home.html">Home</a><span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Pacientes</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="1paciente.html">Pacientes</a>
                 </li>
             </li>
             <li class="nav-item">
@@ -53,7 +51,7 @@
                     </li>
                 </li>
                 <li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="8triagem.html">Triagem</a>
                     </li>
                 </li>
@@ -64,13 +62,17 @@
             </ul>
         </div>
     </nav>
-    <h1>Pacientes</h1>
+    <h1>Triagem</h1>
     
-    <img src="images/Paciente.JPG" style="width:250px; margin-bottom: -50px">
+    <img src="../images/triagem1.JPG" style="width:250px; margin-bottom: -50px">
+
+
+    
+    <br>
 
     <div style="text-align: end; margin-right: 50px;">
-        <a href="1cad_pacientes.html">
-            <img src="images/insert_icon.png" width="30">
+        <a href="8cad_triagem.html">
+            <img src="../images/insert_icon.png" width="30">
         </a>
     </div>
 
@@ -79,11 +81,9 @@
     <table id="table" class="table">
         <thead>
             <tr>
-                <th scope="col">CPF</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Idade</th>
-                <th scope="col">Bairro</th>
-                <th scope="col">Comorbidade</th>
+                <th scope="col">ID Paciente</th>
+                <th scope="col">Temperatura</th>
+                <th scope="col">Pressão</th>
                 <th scope="col"></th>
             </tr>
         </thead>

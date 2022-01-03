@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        Lista de Médicos
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body onload="listar()">
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a><span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="1paciente.html">Pacientes</a>
+                </li>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="2medicos.html">Médicos</a>
+            </li>
+            <li>
+            <li class="nav-item">
+                <a class="nav-link" href="3enfermeiros.html">Enfermeiros</a>
+            </li>
+            <li>
+                <li class="nav-item">
+                    <a class="nav-link" href="4Medicamentos.html">Medicamentos</a>
+                </li>
+            <li>
+                <li class="nav-item">
+                    <a class="nav-link" href="5tecnicos.html">Técnicos</a>
+                </li>
+                <li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="6exames.html">Exames</a>
+                    </li>
+                </li>
+                <li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="7recepcionistas.html">Recepcionistas</a>
+                    </li>
+                </li>
+                <li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="8triagem.html">Triagem</a>
+                    </li>
+                </li>
+                <li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="9consultas.html">Consultas</a>
+                    </li>            
+            </ul>
+        </div>
+    </nav>
+    <h1>Médicos</h1>
+    
+    <img src="../images/Médicos.JPG" style="width:250px; margin-bottom: -50px">
+
+    <div style="text-align: end; margin-right: 50px;">
+        <a href="2cad_medicos.html">
+            <img src="../images/insert_icon.png" width="30">
+        </a>
+    </div>
+
+    <br>
+
+    <table id="table" class="table">
+        <thead>
+            <tr>
+                <th scope="col">CRM</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Especialidade</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <!-- Bem aqui será gerada a tag TR que indica a linha que precisaremos gerar repetição com base
+            na lista que iremos obter da API para relacionar todos os clientes existentes -->
+    </table>
+</body>
+
+</html>

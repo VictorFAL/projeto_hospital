@@ -1,2 +1,2 @@
-id;id_paciente;id_medico;diagnostico
+id;id_paciente;id_medico;diagnostico;data de retorno
 1;1;1;lupus
