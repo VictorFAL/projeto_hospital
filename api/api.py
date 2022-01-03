@@ -4,12 +4,13 @@ import csv
 import json
 
 app = Flask(__name__)
-cors = CORS(api)
-api.config['CORS_HEADERS'] = 'Content-Type'
+
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 ##### PACIENTES #####
 # Listar
-@app.route('/paciente', methods=['GET'])
+@app.route('/pacientes', methods=['GET'])
 def pacientes():
     pacientes = listar_csv('db\pacientes.csv')
     return json.dumps(pacientes)
