@@ -117,7 +117,7 @@
             row.append($('<td/>').html(lista[i]['id']));
             row.append($('<td/>').html(lista[i]['temperatura']));
             row.append($('<td/>').html(lista[i]['pressao']));      // SE NAO FUNCIONAR MUDAR ISSO  abaixo
-            row.append($('<td/>').html('<img src="images/delete_icon.png" width="30" onclick="deletar(' + i + ')" style="cursor: pointer;">'));
+            row.append($('<td/>').html('<img src="../images/delete_icon.png" width="30" onclick="deletar(' + i + ')" style="cursor: pointer;">'));
             $('#table').append(row);
         }
     }

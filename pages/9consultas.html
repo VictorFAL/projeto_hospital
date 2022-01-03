@@ -124,7 +124,7 @@
             row.append($('<td/>').html(lista[i]['id_medico']));
             row.append($('<td/>').html(lista[i]['diagnostico']));
             row.append($('<td/>').html(lista[i]['retorno']));      // SE NAO FUNCIONAR MUDAR ISSO  abaixo
-            row.append($('<td/>').html('<img src="images/delete_icon.png" width="30" onclick="deletar(' + i + ')" style="cursor: pointer;">'));
+            row.append($('<td/>').html('<img src="../images/delete_icon.png" width="30" onclick="deletar(' + i + ')" style="cursor: pointer;">'));
             $('#table').append(row);
         }
     }
